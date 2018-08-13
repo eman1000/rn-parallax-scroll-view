@@ -39,6 +39,7 @@ class App extends React.Component{
           thumbnail={thumbnail}
           renderFixedHeader={()=>this.renderFixedHeader()}
           renderScrollViewContent={()=>this.renderScrollViewContent()}
+          transformHeader
         />
       </View>
     );
@@ -64,7 +65,7 @@ $ npm install rn-parallax-scroll-view --save
 
 ## Demo
 
-./rn.gif
+![](./rn.gif)
 
 
 ## Usage (API)
@@ -79,8 +80,12 @@ The `ParallaxScrollView` component adds a few additional properties, as describe
 | `headerMaxHeight` | `number` | No | The max height of the header defaults to  `300` |
 | `headerMinHeight` | `number` | No | The max height of the header defaults to  `60` for ios and `73` for android |
 | `headerScrollDistance` | `number` | No | Defaults to `240` |
-| `renderFixedHeader` | `func` | No | Renders the fix header |
-| `renderScrollViewContent` | `func` | No | Renders the scroll view content | 
+| `renderFixedHeader` | `func` | Yes | Renders the fixed header |
+| `renderScrollViewContent` | `func` | Yes | Renders the scroll view content | 
+| `headerBarStyles` | `object` | No | Header component styles |
+| `transformHeader` | `bool` | No | Is header scalable |
+| `headerWrapperStyles` | `object` | No | Header wrapper for wrapping the header |
+| `backgroundImageStyles` | `object` | No | Style background Image |
 
 
 ## Contributing

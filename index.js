@@ -28,7 +28,15 @@ export default class RNParallaxScrollView extends Component {
   render() {
     // Because of content inset the scroll value will be negative on iOS so bring
     // it back to 0.
-    const { headerMaxHeight, headerMinHeight, headerScrollDistance } = this.props;
+    const {
+      headerMaxHeight,
+      headerMinHeight,
+      headerScrollDistance,
+      headerBarStyles,
+      headerWrapperStyles,
+      transformHeader,
+      backgroundImageStyles
+    } = this.props;
     const HEADER_MAX_HEIGHT = headerMaxHeight ? headerMaxHeight : DEFAULT_HEADER_MAX_HEIGHT;
     const HEADER_MIN_HEIGHT = headerMinHeight ? headerMinHeight : DEFAULT_HEADER_MIN_HEIGHT;
     const HEADER_SCROLL_DISTANCE = headerScrollDistance ? headerScrollDistance : DEFAULT_HEADER_SCROLL_DISTANCE;
@@ -105,12 +113,14 @@ export default class RNParallaxScrollView extends Component {
           style={[
             styles.header,
             { transform: [{ translateY: headerTranslate }] },
-            {height: HEADER_MAX_HEIGHT}
+            {height: HEADER_MAX_HEIGHT},
+            headerWrapperStyles && headerWrapperStyles
           ]}
         >
           <Animated.Image
             style={[
               styles.backgroundImage,
+              backgroundImageStyles && backgroundImageStyles,
               {
                 opacity: imageOpacity,
                 transform: [{ translateY: imageTranslate }],
@@ -123,12 +133,14 @@ export default class RNParallaxScrollView extends Component {
         <Animated.View
           style={[
             styles.bar,
+            transformHeader &&
             {
               transform: [
                 { scale: titleScale },
                 { translateY: titleTranslate },
               ],
             },
+            headerBarStyles && headerBarStyles
           ]}
         >
         {this.props.renderFixedHeader()}
@@ -164,13 +176,12 @@ const styles = StyleSheet.create({
   bar: {
     backgroundColor: 'transparent',
     marginTop: Platform.OS === 'ios' ? 28 : 38,
-    height: 32,
-    alignItems: 'center',
-    justifyContent: 'center',
     position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
+    justifyContent:'center',
+    alignItems:'center'
   },
   row: {
     height: 40,
