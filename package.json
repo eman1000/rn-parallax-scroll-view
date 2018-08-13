@@ -1,0 +1,12 @@
+{
+  "name": "rn-parallax-scroll-view",
+  "version": "1.0.0",
+  "description": "React Native Scroll View Component With Sticky Header and parallax support",
+  "keywords":"parallax, scroll view, sticky header",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Emmancipate Musemwa <emancodeinfo@gmail.com> (http://emancode.com)",
+  "license": "MIT"
+}
